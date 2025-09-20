@@ -14,3 +14,118 @@
 2025-09-19 19:01:12 | WARNING | Producer interrupted by user.
 2025-09-19 19:01:12 | INFO | Kafka producer closed.
 2025-09-19 19:01:12 | INFO | END producer.
+2025-09-19 19:11:07 | INFO | Logging to file: logs/project_log.log
+2025-09-19 19:11:07 | INFO | Log sanitization enabled, personal info removed
+2025-09-19 19:11:07 | INFO | Project root: D:/projects/buzzline-04-USERape
+2025-09-19 19:11:07 | INFO | Data folder: D:/projects/buzzline-04-USERape/data
+2025-09-19 19:11:07 | INFO | Data file: D:/projects/buzzline-04-USERape/data/smoker_temps.csv
+2025-09-19 19:11:07 | INFO | START producer.
+2025-09-19 19:11:07 | INFO | Kafka broker address: localhost:9092
+2025-09-19 19:11:07 | INFO | Kafka is ready. Brokers: {'throttle_time_ms': 0, 'brokers': [{'node_id': 1, 'host': 'localhost', 'port': 9092, 'rack': None}], 'cluster_id': 'BelHa6fnRvy4wd5axlKIwQ', 'controller_id': 1}
+2025-09-19 19:11:07 | INFO | Kafka topic: smoker_csv
+2025-09-19 19:11:07 | INFO | Message interval: 5 seconds
+2025-09-19 19:11:07 | INFO | Kafka broker address: localhost:9092
+2025-09-19 19:11:07 | INFO | Connecting to Kafka broker at localhost:9092...
+2025-09-19 19:11:07 | INFO | Kafka producer successfully created.
+2025-09-19 19:11:07 | INFO | Kafka broker address: localhost:9092
+2025-09-19 19:11:08 | INFO | Topic 'smoker_csv' already exists. Recreating fresh...
+2025-09-19 19:11:08 | INFO | Requested deletion of topic 'smoker_csv'.
+2025-09-19 19:11:08 | INFO | Topic 'smoker_csv' created successfully.
+2025-09-19 19:11:08 | INFO | Kafka topic 'smoker_csv' is ready.
+2025-09-19 19:11:08 | INFO | Starting message production to topic 'smoker_csv'...
+2025-09-19 19:11:08 | INFO | Opening data file in read mode: D:/projects/buzzline-04-USERape/data/smoker_temps.csv
+2025-09-19 19:11:08 | INFO | Reading data from file: D:/projects/buzzline-04-USERape/data/smoker_temps.csv
+2025-09-19 19:11:08 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-20T00:11:08.406824', 'temperature': 70.4}
+2025-09-19 19:11:13 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-20T00:11:13.411402', 'temperature': 70.8}
+2025-09-19 19:11:18 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-20T00:11:18.412768', 'temperature': 71.2}
+2025-09-19 19:11:23 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-20T00:11:23.418360', 'temperature': 71.6}
+2025-09-19 19:11:28 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-20T00:11:28.421530', 'temperature': 72.0}
+2025-09-19 19:11:33 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-20T00:11:33.427708', 'temperature': 72.4}
+2025-09-19 19:11:38 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-20T00:11:38.430991', 'temperature': 72.8}
+2025-09-19 19:11:38 | INFO | Logging to file: logs/project_log.log
+2025-09-19 19:11:38 | INFO | Log sanitization enabled, personal info removed
+2025-09-19 19:11:39 | INFO | START consumer.
+2025-09-19 19:11:39 | INFO | Kafka topic: smoker_csv
+2025-09-19 19:11:39 | INFO | Kafka consumer group id: smoker_group
+2025-09-19 19:11:39 | INFO | Rolling window size: 10
+2025-09-19 19:11:39 | INFO | Consumer: Topic 'smoker_csv' and group 'smoker_group'...
+2025-09-19 19:11:39 | INFO | Rolling window size: 10
+2025-09-19 19:11:39 | INFO | Kafka broker address: localhost:9092
+2025-09-19 19:11:39 | INFO | Creating Kafka consumer. Topic='smoker_csv' and group ID='smoker_group'.
+2025-09-19 19:11:39 | INFO | Kafka consumer created successfully.
+2025-09-19 19:11:39 | INFO | Polling messages from topic 'smoker_csv'...
+2025-09-19 19:11:42 | INFO | Processed JSON message: {'timestamp': '2025-09-20T00:11:08.406824', 'temperature': 70.4}
+2025-09-19 19:11:42 | INFO | Processed JSON message: {'timestamp': '2025-09-20T00:11:13.411402', 'temperature': 70.8}
+2025-09-19 19:11:42 | INFO | Processed JSON message: {'timestamp': '2025-09-20T00:11:18.412768', 'temperature': 71.2}
+2025-09-19 19:11:43 | INFO | Processed JSON message: {'timestamp': '2025-09-20T00:11:23.418360', 'temperature': 71.6}
+2025-09-19 19:11:43 | INFO | Processed JSON message: {'timestamp': '2025-09-20T00:11:28.421530', 'temperature': 72.0}
+2025-09-19 19:11:43 | INFO | Processed JSON message: {'timestamp': '2025-09-20T00:11:33.427708', 'temperature': 72.4}
+2025-09-19 19:11:43 | INFO | Processed JSON message: {'timestamp': '2025-09-20T00:11:38.430991', 'temperature': 72.8}
+2025-09-19 19:11:43 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-20T00:11:43.432842', 'temperature': 73.2}
+2025-09-19 19:11:43 | INFO | Processed JSON message: {'timestamp': '2025-09-20T00:11:43.432842', 'temperature': 73.2}
+2025-09-19 19:11:48 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-20T00:11:48.433639', 'temperature': 73.6}
+2025-09-19 19:11:48 | INFO | Processed JSON message: {'timestamp': '2025-09-20T00:11:48.433639', 'temperature': 73.6}
+2025-09-19 19:11:53 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-20T00:11:53.436118', 'temperature': 74.0}
+2025-09-19 19:11:53 | INFO | Processed JSON message: {'timestamp': '2025-09-20T00:11:53.436118', 'temperature': 74.0}
+2025-09-19 19:11:58 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-20T00:11:58.439520', 'temperature': 74.4}
+2025-09-19 19:11:58 | INFO | Processed JSON message: {'timestamp': '2025-09-20T00:11:58.439520', 'temperature': 74.4}
+2025-09-19 19:12:03 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-20T00:12:03.443672', 'temperature': 74.8}
+2025-09-19 19:12:03 | INFO | Processed JSON message: {'timestamp': '2025-09-20T00:12:03.443672', 'temperature': 74.8}
+2025-09-19 19:12:08 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-20T00:12:08.448580', 'temperature': 75.2}
+2025-09-19 19:12:08 | INFO | Processed JSON message: {'timestamp': '2025-09-20T00:12:08.448580', 'temperature': 75.2}
+2025-09-19 19:12:13 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-20T00:12:13.449774', 'temperature': 75.6}
+2025-09-19 19:12:13 | INFO | Processed JSON message: {'timestamp': '2025-09-20T00:12:13.449774', 'temperature': 75.6}
+2025-09-19 19:12:18 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-20T00:12:18.452464', 'temperature': 76.0}
+2025-09-19 19:12:18 | INFO | Processed JSON message: {'timestamp': '2025-09-20T00:12:18.452464', 'temperature': 76.0}
+2025-09-19 19:12:23 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-20T00:12:23.456670', 'temperature': 76.4}
+2025-09-19 19:12:23 | INFO | Processed JSON message: {'timestamp': '2025-09-20T00:12:23.456670', 'temperature': 76.4}
+2025-09-19 19:12:28 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-20T00:12:28.458579', 'temperature': 76.8}
+2025-09-19 19:12:28 | INFO | Processed JSON message: {'timestamp': '2025-09-20T00:12:28.458579', 'temperature': 76.8}
+2025-09-19 19:12:33 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-20T00:12:33.463672', 'temperature': 77.2}
+2025-09-19 19:12:33 | INFO | Processed JSON message: {'timestamp': '2025-09-20T00:12:33.463672', 'temperature': 77.2}
+2025-09-19 19:12:38 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-20T00:12:38.468611', 'temperature': 77.6}
+2025-09-19 19:12:38 | INFO | Processed JSON message: {'timestamp': '2025-09-20T00:12:38.468611', 'temperature': 77.6}
+2025-09-19 19:12:43 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-20T00:12:43.471232', 'temperature': 78.0}
+2025-09-19 19:12:43 | INFO | Processed JSON message: {'timestamp': '2025-09-20T00:12:43.471232', 'temperature': 78.0}
+2025-09-19 19:12:48 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-20T00:12:48.473580', 'temperature': 78.4}
+2025-09-19 19:12:48 | INFO | Processed JSON message: {'timestamp': '2025-09-20T00:12:48.473580', 'temperature': 78.4}
+2025-09-19 19:12:53 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-20T00:12:53.475308', 'temperature': 78.8}
+2025-09-19 19:12:53 | INFO | Processed JSON message: {'timestamp': '2025-09-20T00:12:53.475308', 'temperature': 78.8}
+2025-09-19 19:12:58 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-20T00:12:58.478124', 'temperature': 79.2}
+2025-09-19 19:12:58 | INFO | Processed JSON message: {'timestamp': '2025-09-20T00:12:58.478124', 'temperature': 79.2}
+2025-09-19 19:13:03 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-20T00:13:03.480931', 'temperature': 79.6}
+2025-09-19 19:13:03 | INFO | Processed JSON message: {'timestamp': '2025-09-20T00:13:03.480931', 'temperature': 79.6}
+2025-09-19 19:13:08 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-20T00:13:08.485349', 'temperature': 80.0}
+2025-09-19 19:13:08 | INFO | Processed JSON message: {'timestamp': '2025-09-20T00:13:08.485349', 'temperature': 80.0}
+2025-09-19 19:13:13 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-20T00:13:13.490351', 'temperature': 80.4}
+2025-09-19 19:13:13 | INFO | Processed JSON message: {'timestamp': '2025-09-20T00:13:13.490351', 'temperature': 80.4}
+2025-09-19 19:13:18 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-20T00:13:18.495838', 'temperature': 80.8}
+2025-09-19 19:13:18 | INFO | Processed JSON message: {'timestamp': '2025-09-20T00:13:18.495838', 'temperature': 80.8}
+2025-09-19 19:13:23 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-20T00:13:23.498173', 'temperature': 81.2}
+2025-09-19 19:13:23 | INFO | Processed JSON message: {'timestamp': '2025-09-20T00:13:23.498173', 'temperature': 81.2}
+2025-09-19 19:13:28 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-20T00:13:28.500394', 'temperature': 81.6}
+2025-09-19 19:13:28 | INFO | Processed JSON message: {'timestamp': '2025-09-20T00:13:28.500394', 'temperature': 81.6}
+2025-09-19 19:13:33 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-20T00:13:33.501635', 'temperature': 82.0}
+2025-09-19 19:13:33 | INFO | Processed JSON message: {'timestamp': '2025-09-20T00:13:33.501635', 'temperature': 82.0}
+2025-09-19 19:13:38 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-20T00:13:38.503376', 'temperature': 82.4}
+2025-09-19 19:13:38 | INFO | Processed JSON message: {'timestamp': '2025-09-20T00:13:38.503376', 'temperature': 82.4}
+2025-09-19 19:13:43 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-20T00:13:43.505403', 'temperature': 82.8}
+2025-09-19 19:13:43 | INFO | Processed JSON message: {'timestamp': '2025-09-20T00:13:43.505403', 'temperature': 82.8}
+2025-09-19 19:13:48 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-20T00:13:48.506684', 'temperature': 83.2}
+2025-09-19 19:13:48 | INFO | Processed JSON message: {'timestamp': '2025-09-20T00:13:48.506684', 'temperature': 83.2}
+2025-09-19 19:13:53 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-20T00:13:53.507987', 'temperature': 83.6}
+2025-09-19 19:13:53 | INFO | Processed JSON message: {'timestamp': '2025-09-20T00:13:53.507987', 'temperature': 83.6}
+2025-09-19 19:13:58 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-20T00:13:58.510037', 'temperature': 84.0}
+2025-09-19 19:13:58 | INFO | Processed JSON message: {'timestamp': '2025-09-20T00:13:58.510037', 'temperature': 84.0}
+2025-09-19 19:14:03 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-20T00:14:03.511464', 'temperature': 84.4}
+2025-09-19 19:14:03 | INFO | Processed JSON message: {'timestamp': '2025-09-20T00:14:03.511464', 'temperature': 84.4}
+2025-09-19 19:14:08 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-20T00:14:08.512907', 'temperature': 84.8}
+2025-09-19 19:14:08 | INFO | Processed JSON message: {'timestamp': '2025-09-20T00:14:08.512907', 'temperature': 84.8}
+2025-09-19 19:14:13 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-20T00:14:13.514202', 'temperature': 85.2}
+2025-09-19 19:14:13 | INFO | Processed JSON message: {'timestamp': '2025-09-20T00:14:13.514202', 'temperature': 85.2}
+2025-09-19 19:14:16 | WARNING | Consumer interrupted by user.
+2025-09-19 19:14:16 | INFO | Kafka consumer for topic 'smoker_csv' closed.
+2025-09-19 19:14:18 | INFO | Sent message to topic 'smoker_csv': {'timestamp': '2025-09-20T00:14:18.516028', 'temperature': 85.6}
+2025-09-19 19:14:21 | WARNING | Producer interrupted by user.
+2025-09-19 19:14:21 | INFO | Kafka producer closed.
+2025-09-19 19:14:21 | INFO | END producer.
