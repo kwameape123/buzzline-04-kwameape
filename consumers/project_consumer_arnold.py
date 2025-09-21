@@ -1,17 +1,19 @@
 """
-json_consumer_case.py
+json_consumer_arnold.py
 
-Consume json messages from a Kafka topic and visualize author counts in real-time.
+Consume json messages from a Kafka topic and visualize.
 
 JSON is a set of key:value pairs. 
 
-Example serialized Kafka message
-"{\"message\": \"I love Python!\", \"author\": \"Eve\"}"
-
-Example JSON message (after deserialization) to be analyzed
-{"message": "I love Python!", "author": "Eve"}
-
-"""
+{
+    "message": "I just shared a meme! It was amazing.",
+    "author": "Charlie",
+    "timestamp": "2025-01-29 14:35:20",
+    "category": "humor",
+    "sentiment": 0.87,
+    "keyword_mentioned": "meme",
+    "message_length": 42}
+    """
 
 #####################################
 # Import Modules
@@ -48,14 +50,14 @@ load_dotenv()
 
 def get_kafka_topic() -> str:
     """Fetch Kafka topic from environment or use default."""
-    topic = os.getenv("BUZZ_TOPIC", "unknown_topic")
+    topic = os.getenv("PROJECT_TOPIC", "unknown_topic")
     logger.info(f"Kafka topic: {topic}")
     return topic
 
 
 def get_kafka_consumer_group_id() -> str:
     """Fetch Kafka consumer group id from environment or use default."""
-    group_id: str = os.getenv("BUZZ_CONSUMER_GROUP_ID", "default_group")
+    group_id: str = os.getenv("PROJECT_CONSUMER_GROUP_ID", "default_group")
     logger.info(f"Kafka consumer group id: {group_id}")
     return group_id
 
@@ -64,8 +66,10 @@ def get_kafka_consumer_group_id() -> str:
 # Set up data structures
 #####################################
 
-# Initialize a dictionary to store author counts
-author_counts = defaultdict(int)
+# Initialize a dictionary to store keyword counts
+keyword_counts = defaultdict(int)
+timestamps = []
+sentiments = []
 
 #####################################
 # Set up live visuals
@@ -75,7 +79,7 @@ author_counts = defaultdict(int)
 # two objects at once:
 # - a figure (which can have many axis)
 # - an axis (what they call a chart in Matplotlib)
-fig, ax = plt.subplots()
+fig, ax = plt.subplots(1,3,figsize=(12,4))
 
 # Use the ion() method (stands for "interactive on")
 # to turn on interactive mode for live updates
@@ -88,28 +92,42 @@ plt.ion()
 
 
 def update_chart():
-    """Update the live chart with the latest author counts."""
+    """Update the live chart with the latest keyword counts."""
     # Clear the previous chart
-    ax.clear()
+    for axis in ax:
+        axis.clear()
 
-    # Get the authors and counts from the dictionary
-    authors_list = list(author_counts.keys())
-    counts_list = list(author_counts.values())
+    # Get the keyword, counts and percentages from the dictionary
+    keyword_list = list(keyword_counts.keys())
+    counts_list = list(keyword_counts.values())
+    total = sum(counts_list)
+    percentage_list = [(count/total)*100 for count in counts_list]
 
     # Create a bar chart using the bar() method.
+    # Create a line chart using the plot() method.
     # Pass in the x list, the y list, and the color
-    ax.bar(authors_list, counts_list, color="skyblue")
+    ax[0].bar(keyword_list, counts_list, color="skyblue")
+    ax[1].bar(keyword_list, percentage_list,color="green")
+    ax[2].plot(timestamps,sentiments,color="red")
 
     # Use the built-in axes methods to set the labels and title
-    ax.set_xlabel("Authors")
-    ax.set_ylabel("Message Counts")
-    ax.set_title("Real-Time Author Message Counts")
+    ax[0].set_xlabel("Keywords")
+    ax[0].set_ylabel("Keywords Counts")
+    ax[0].set_title("Real-Time Keywords Counts")
+    ax[1].set_xlabel("Keywords")
+    ax[1].set_ylabel("Keywords Percentage")
+    ax[1].set_title("Real-Time Keywords Percentage")
+    ax[2].set_xlabel("Timestamp")
+    ax[2].set_ylabel("Sentiment Score")
+    ax[2].set_title("Real-Time Sentiment Score Tracking")
 
     # Use the set_xticklabels() method to rotate the x-axis labels
     # Pass in the x list, specify the rotation angle is 45 degrees,
     # and align them to the right
     # ha stands for horizontal alignment
-    ax.set_xticklabels(authors_list, rotation=45, ha="right")
+    ax[0].set_xticklabels(keyword_list, rotation=45, ha="right")
+    ax[1].set_xticklabels(keyword_list, rotation=45, ha="right")
+    ax[2].set_xticklabels(timestamps, rotation=45, ha="right")
 
     # Use the tight_layout() method to automatically adjust the padding
     plt.tight_layout()
@@ -118,7 +136,7 @@ def update_chart():
     plt.draw()
 
     # Pause briefly to allow some time for the chart to render
-    plt.pause(0.01)
+    plt.pause(0.1)
 
 
 #####################################
@@ -145,15 +163,24 @@ def process_message(message: str) -> None:
 
         # Ensure it's a dictionary before accessing fields
         if isinstance(message_dict, dict):
-            # Extract the 'author' field from the Python dictionary
+            # Extract the indicate fields from the Python dictionary
             author = message_dict.get("author", "unknown")
+            keyword = message_dict.get("keyword_mentioned","unknown")
+            sentiment = message_dict.get("sentiment","unknown")
+            timestamp= message_dict.get("timestamp","unknown")
             logger.info(f"Message received from author: {author}")
+            logger.info(f"Keyword mentioned:{keyword}")
+            logger.info(f"sentiment score:{sentiment}")
 
-            # Increment the count for the author
-            author_counts[author] += 1
+            # Increment the count for the keywords of selected author.
+            keyword_counts[keyword] += 1
+
+            # Add elements to the timestamp and sentiment list
+            timestamps.append(timestamp)
+            sentiments.append(sentiment)
 
             # Log the updated counts
-            logger.info(f"Updated author counts: {dict(author_counts)}")
+            logger.info(f"Updated keyword counts: {dict(keyword_counts)}")
 
             # Update the chart
             update_chart()
@@ -175,6 +202,16 @@ def process_message(message: str) -> None:
 
 
 def main() -> None:
+# Add input function to request author name.
+    author_choice=["Alice","Bob","Charlie","Eve"] # List of possible authors
+    print("Author Options:",",".join(author_choice))
+    choice = input("Enter an author from options:")
+    if choice in author_choice:
+        print(f"You have selected {choice} as your author")
+    else:
+        print("Invalid author choice. Enter a valid author")
+    
+
     """
     Main entry point for the consumer.
 
@@ -200,7 +237,12 @@ def main() -> None:
             # Use the value attribute to extract the message as a string
             message_str = message.value
             logger.debug(f"Received message at offset {message.offset}: {message_str}")
-            process_message(message_str)
+
+            # Temporary load message string into a dictionary to develop condition for processing messages.
+            # Message is processed for choosen author.
+            message_dict2=json.loads(message_str)
+            if message_dict2.get("author")==choice:
+                process_message(message_str)
     except KeyboardInterrupt:
         logger.warning("Consumer interrupted by user.")
     except Exception as e:
